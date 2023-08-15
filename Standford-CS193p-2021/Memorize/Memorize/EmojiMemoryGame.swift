@@ -7,15 +7,21 @@
 
 import Foundation
 
-class EmojiMemoryGame {
+class EmojiMemoryGame: ObservableObject {
     
+    // MARK: - Properties
     static var emojis = ["🚗", "🛴", "✈️", "🛵", "⛵️", "🚎", "🚐", "🚛", "🛻", "🏎", "🚂", "🚊", "🚀", "🚁", "🚢", "🛶", "🛥", "🚞", "🚟", "🚃"]
     
-    private var model = MemoryGame(noOfPairsOfCards: 4) { pairIndex in
+    @Published private var model = MemoryGame(noOfPairsOfCards: 4) { pairIndex in
         emojis[pairIndex]
     }
     
     var cards: Array<MemoryGame<String>.Card> {
-        return model.cards
+        model.cards
+    }
+    
+    // MARK: - Methods
+    func chooseCard(_ card: MemoryGame<String>.Card) {
+        model.choose(card)
     }
 }
