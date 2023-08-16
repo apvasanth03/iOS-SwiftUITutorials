@@ -10,18 +10,20 @@ import Foundation
 class EmojiMemoryGame: ObservableObject {
     
     // MARK: - Properties
-    static var emojis = ["🚗", "🛴", "✈️", "🛵", "⛵️", "🚎", "🚐", "🚛", "🛻", "🏎", "🚂", "🚊", "🚀", "🚁", "🚢", "🛶", "🛥", "🚞", "🚟", "🚃"]
+    typealias Card = MemoryGame<String>.Card
+    
+    private static var emojis = ["🚗", "🛴", "✈️", "🛵", "⛵️", "🚎", "🚐", "🚛", "🛻", "🏎", "🚂", "🚊", "🚀", "🚁", "🚢", "🛶", "🛥", "🚞", "🚟", "🚃"]
     
     @Published private var model = MemoryGame(noOfPairsOfCards: 4) { pairIndex in
         emojis[pairIndex]
     }
     
-    var cards: Array<MemoryGame<String>.Card> {
+    var cards: Array<Card> {
         model.cards
     }
     
     // MARK: - Methods
-    func chooseCard(_ card: MemoryGame<String>.Card) {
+    func chooseCard(_ card: Card) {
         model.choose(card)
     }
 }
