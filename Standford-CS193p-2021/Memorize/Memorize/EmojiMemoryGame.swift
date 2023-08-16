@@ -14,7 +14,7 @@ class EmojiMemoryGame: ObservableObject {
     
     private static var emojis = ["🚗", "🛴", "✈️", "🛵", "⛵️", "🚎", "🚐", "🚛", "🛻", "🏎", "🚂", "🚊", "🚀", "🚁", "🚢", "🛶", "🛥", "🚞", "🚟", "🚃"]
     
-    @Published private var model = MemoryGame(noOfPairsOfCards: 4) { pairIndex in
+    @Published private var model = MemoryGame(noOfPairsOfCards: 8) { pairIndex in
         emojis[pairIndex]
     }
     
